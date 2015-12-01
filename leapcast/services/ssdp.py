@@ -110,7 +110,7 @@ class SSDPHandler(DatagramRequestHandler):
         return unicode(iface)
 
     def datagramReceived(self, datagram, address):
-        if "urn:dial-multiscreen-org:service:dial:1" in datagram and "M-SEARCH" in datagram:
+        if b"urn:dial-multiscreen-org:service:dial:1" in datagram and b"M-SEARCH" in datagram:
             data = render(self.header).generate(
                 ip=self.get_remote_ip(address),
                 uuid=Environment.uuid
